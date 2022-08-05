@@ -10,7 +10,7 @@ locals {
 
 module "project-factory" {
     source  = "terraform-google-modules/project-factory/google"
-    version = "13.0.0"
+    # version = "13.0.0"
     name = local.project_name
     project_id = local.project_id
     # current version assumes projects are in a folder 

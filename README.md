@@ -1,5 +1,11 @@
 ## Sample terraform scripts for GCP 
 
+Creates a project with a user, service account and VPC with 3 subnets
+
+Assumes project creation goes under a folder.
+
+The required variables are in sensitive.auto.tfvars (check out the template)
+
 #### Pre-req
 
 1. Create a service account with the necessary permissions (or for your test env, just make it an editor for testing). If you need to create projects or folders, create this SA at the org level
