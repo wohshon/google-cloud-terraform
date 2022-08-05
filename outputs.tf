@@ -18,3 +18,12 @@ output "service_accounts" {
 output "iam" {
   value = module.iam.roles
 }
+
+# network modules
+output "vpc" {
+  value = module.networks.network
+}
+
+output "subnets" {
+  value = module.networks.subnets
+}

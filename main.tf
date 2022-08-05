@@ -31,4 +31,13 @@ module "iam" {
 # enable services
 
 # create a custom network with 3 subnets
-
+module "networks" {
+  source = "./modules/networks"
+  project_id = var.project_id
+  region = var.region
+  network_name = var.network_name
+  routing_mode = var.routing_mode
+  subnet_names = var.subnet_names
+  subnet_ips = var.subnet_ips
+  subnet_desc = var.subnet_desc  
+}
