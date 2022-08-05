@@ -22,4 +22,18 @@ gcloud auth application-default set-quota-project to a project where the above u
 
 Refer to `providers.tf` for service account setup
 
+### from scratch , creating projects
+```
+export TF_VAR_project_name=test-terraform-1
+export TF_VAR_project_id=test-terraform-1
+```
+
+OR to append the timestamp as a avoid clashing of project id 
+
+```
+export TF_VAR_project_id=$TF_VAR_project_name"-"$(date +%s)
+```
+After creation of project, to make changes in a new session, provide the actual project id (since during creation time a timestamp is used)
+
+export TF_VAR_project_id=[actual project id]
 
