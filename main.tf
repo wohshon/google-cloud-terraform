@@ -41,3 +41,8 @@ module "networks" {
   subnet_ips = var.subnet_ips
   subnet_desc = var.subnet_desc  
 }
+
+module "org_policies" {
+  source = "./modules/org_policies"
+  project_id = var.project_id  
+}
