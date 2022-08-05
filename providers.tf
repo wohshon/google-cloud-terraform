@@ -29,3 +29,12 @@ provider "google-beta" {
 }
 
 # TODO configure backend to point to gcs
+# # backend
+/*
+terraform {
+  backend "gcs" {
+    bucket      = "wohshon-altostrat-tf-state"
+    prefix      = "[project_name]\\tfstate"
+  }
+}
+*/
