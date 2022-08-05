@@ -1,3 +1,5 @@
+# Root module
+
 # create project
 
 module "project" {
@@ -8,3 +10,25 @@ module "project" {
   project_id = var.project_id
   org_id = var.org_id
 }
+
+# create default service account
+module "service_accounts" {
+  source = "./modules/service_accounts"
+  project_default_sa_account_id  = var.project_default_sa_account_id
+  project_default_sa_account_role  = var.project_default_sa_account_role
+  project_default_sa_account_desc = var.project_default_sa_account_desc
+  project_id = var.project_id
+}
+
+# create user for project
+module "iam" {
+  source = "./modules/iam"
+  project_id = var.project_id
+  project_user = var.project_user
+  project_user_role = var.project_user_role
+
+}
+# enable services
+
+# create a custom network with 3 subnets
+

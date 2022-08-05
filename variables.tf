@@ -7,6 +7,8 @@ variable "region" {
     description = "GCP region" 
 }
 
+# project-factory modules
+
 variable "org_id" {
   type = string
   description ="org id"
@@ -40,3 +42,32 @@ variable "folder_id" {
     description = "Folder ID"
 }
 
+# service_account modules
+
+variable "project_default_sa_account_id" {
+    type = string
+    description = "default sa account id / email"
+}
+
+variable "project_default_sa_account_role" {
+    type = string
+    description = "default sa account role"
+
+}
+
+variable "project_default_sa_account_desc" {
+    type = string
+    description = "default sa account desc"
+}
+
+# iam 
+
+variable "project_user" {
+    type = string
+    description = "project user"
+}
+
+variable "project_user_role" {
+    type = string
+    description = "project user_role"
+}

@@ -2,3 +2,11 @@ billing_account = "xxxxxxxxx"
 folder_id = "xxxxxxxxxx"
 tf_sa = "xxxxxxxxxx"
 org_id = "xxxxxxxxxx"
+
+project_default_sa_account_id = "generic-sa"
+project_default_sa_account_desc = "Generic SA for testing"
+project_default_sa_account_role = "roles/editor"
+
+## for human actor
+project_user = "x@.example.com"
+project_user_role = "roles/editor"
