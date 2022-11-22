@@ -42,6 +42,18 @@ module "vpc" {
             # subnet_private_access = "true"
             # subnet_flow_logs      = "true"
             # description           = "This subnet has a description"
+        },
+        {
+            subnet_name           = local.subnet_names[3]
+            subnet_ip             = local.subnet_ips[3]
+            subnet_region         = local.region
+            description           = local.subnet_desc[3]
+        },
+        {
+            subnet_name           = local.subnet_names[4]
+            subnet_ip             = local.subnet_ips[4]
+            subnet_region         = local.region
+            description           = local.subnet_desc[4]
         }
     ]
 }
