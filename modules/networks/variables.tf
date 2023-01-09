@@ -25,3 +25,19 @@ variable "subnet_ips" {
 variable "subnet_desc" {
     type    = list(string)
 }
+
+variable "ip_range_pods" {
+  type = string
+}
+
+variable "ip_range_services" {
+  type = string
+}
+
+variable "ip_range_pods_name" {
+  type = string
+}
+
+variable "ip_range_services_name" {
+  type = string
+}

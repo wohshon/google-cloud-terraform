@@ -20,6 +20,7 @@ output "iam" {
 }
 
 # network modules
+
 output "vpc" {
   value = module.networks.network
 }
@@ -27,3 +28,21 @@ output "vpc" {
 output "subnets" {
   value = module.networks.subnets
 }
+
+# gke module
+
+#/*
+output "gke_cluster_name" {
+  value = module.gke.gke_cluster_name
+}
+
+output "gke_cluster_id" {
+  value = module.gke.gke_cluster_id
+}
+#*/
+
+/*
+output "gke_endpoint" {
+  value = module.gke.endpoint
+}
+*/

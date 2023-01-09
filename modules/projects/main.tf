@@ -20,3 +20,66 @@ module "project-factory" {
     billing_account = local.billing_account
     # use default values for service accounts so default service accounts will be disabled.
 }
+
+# enable services
+
+resource "google_project_service" "container" {
+  project = var.project_id
+  service = "container.googleapis.com"
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+
+  disable_dependent_services = true
+}
+
+resource "google_project_service" "compute" {
+  project = var.project_id
+  service = "compute.googleapis.com"
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+
+  disable_dependent_services = true
+}
+
+# Wait for the new configuration to propagate
+# (might be redundant)
+resource "time_sleep" "wait_project_init" {
+  create_duration = "60s"
+
+  depends_on = [google_project_service.container,google_project_service.compute ]
+}
+
+# https://stackoverflow.com/questions/59055395/can-i-automatically-enable-apis-when-using-gcp-cloud-with-terraform
+#
+/*
+resource "google_project_service" "container" {
+  project = var.project_id
+  service = "container.googleapis.com"
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+
+  disable_dependent_services = true
+}
+
+resource "google_project_service" "compute" {
+  project = var.project_id
+  service = "compute.googleapis.com"
+
+  timeouts {
+    create = "30m"
+    update = "40m"
+  }
+
+  disable_dependent_services = true
+}
+#
+*/

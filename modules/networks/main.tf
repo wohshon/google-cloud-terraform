@@ -9,6 +9,11 @@ locals {
     subnet_ips = var.subnet_ips
     subnet_desc = var.subnet_desc
     region = var.region
+    ip_range_pods = var.ip_range_pods
+    ip_range_services = var.ip_range_services
+    ip_range_pods_name = var.ip_range_pods_name
+    ip_range_services_name = var.ip_range_services_name
+    
 }
 
 module "vpc" {
@@ -44,4 +49,16 @@ module "vpc" {
             # description           = "This subnet has a description"
         }
     ]
+    secondary_ranges = {
+    "${local.subnet_names[1]}" = [ #for app tier
+      {
+        range_name    = local.ip_range_pods_name
+        ip_cidr_range = local.ip_range_pods
+      },
+      {
+        range_name    = local.ip_range_services_name
+        ip_cidr_range = local.ip_range_services
+      },
+    ]
+  }
 }

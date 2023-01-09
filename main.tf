@@ -31,6 +31,7 @@ module "iam" {
 # enable services
 
 # create a custom network with 3 subnets
+#/*
 module "networks" {
   source = "./modules/networks"
   project_id = var.project_id
@@ -40,9 +41,29 @@ module "networks" {
   subnet_names = var.subnet_names
   subnet_ips = var.subnet_ips
   subnet_desc = var.subnet_desc  
+  ip_range_pods = var.ip_range_pods
+  ip_range_services = var.ip_range_services
+  ip_range_pods_name = var.ip_range_pods_name
+  ip_range_services_name = var.ip_range_services_name  
 }
-
+#*/
 module "org_policies" {
   source = "./modules/org_policies"
   project_id = var.project_id  
 }
+
+# /* 
+
+module "gke" {
+  source = "./modules/gke"
+  project_id = module.project.project_id
+  region = var.region
+  gke_cluster_name = var.gke_cluster_name
+  network_name = module.networks.network.network_name
+  subnet_names = var.subnet_names
+  service_account = "${var.project_default_sa_account_id}@${var.project_id}.iam.gserviceaccount.com"
+  ip_range_pods_name = var.ip_range_pods_name
+  ip_range_services_name = var.ip_range_services_name  
+}
+# */
+
