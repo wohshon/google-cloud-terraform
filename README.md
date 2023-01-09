@@ -1,6 +1,9 @@
 ## Sample terraform scripts for GCP 
 
-Creates a project with a user, service account and VPC some subnets
+Creates a project and the following resources for testing
+- a user
+- service account 
+- VPC and 3 subnets
 
 Assumes project creation goes under a folder.
 
