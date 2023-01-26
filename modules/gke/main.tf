@@ -64,13 +64,16 @@ module "gke" {
     },
   ]
 
+# https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes
+# disabling this so that GKE auto adds the defaul scopes
+/*
   node_pools_oauth_scopes = {
     all = [
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
     ]
   }
-
+*/
   node_pools_labels = {
     all = {}
 
