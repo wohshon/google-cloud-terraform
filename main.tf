@@ -18,6 +18,9 @@ module "service_accounts" {
   project_default_sa_account_role  = var.project_default_sa_account_role
   project_default_sa_account_desc = var.project_default_sa_account_desc
   project_id = var.project_id
+  depends_on = [
+    module.project
+  ] 
 }
 
 # create user for project
@@ -26,7 +29,9 @@ module "iam" {
   project_id = var.project_id
   project_user = var.project_user
   project_user_role = var.project_user_role
-
+  depends_on = [
+    module.project
+  ] 
 }
 # enable services
 
@@ -40,9 +45,15 @@ module "networks" {
   subnet_names = var.subnet_names
   subnet_ips = var.subnet_ips
   subnet_desc = var.subnet_desc  
+  depends_on = [
+    module.project
+  ] 
 }
 
 module "org_policies" {
   source = "./modules/org_policies"
   project_id = var.project_id  
+  depends_on = [
+    module.project
+  ] 
 }
